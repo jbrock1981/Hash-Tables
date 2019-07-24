@@ -5,6 +5,7 @@ class array:
     def __init__(self):
         # Your code here
         pass
+        
 
 
 # Double the size of the given array
