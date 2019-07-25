@@ -29,41 +29,61 @@ def array_read(array, index):
 
 
 # Insert an element in a given array at a given index
-def array_insert():
+def array_insert(array, element, index):
     # Throw an error if array is out of the current count
-
+    if index > array.count:
+        print("index out of range")
+        return None
     # Resize the array if the number of elements is over capacity
-
+    if array.max <= array.count:
+        resize_array(array)
     # Move the elements to create a space at 'index'
+    for i in range(array.count, index, -1):
+        array.elements[i] = array.elements[i - 1]
     # Think about where to start!
-
     # Add the new element to the array and update the count
-    pass
+    array.elements[index] = element
+    array.count += 1
 
 
 # Add an element to the end of the given array
-def array_append():
-
+def array_append(array, element):
     # Hint, this can be done with one line of code
     # (Without using a built in function)
-
     # Your code here
-    pass
+    array_insert(array, element, array.count)
 
 
 # Remove the first occurence of the given element from the array
 # Throw an error if the value is not found
-def array_remove():
+def array_remove(array, element):
     # Your code here
-    pass
-
+    removed = False
+    for i in range(array.count):
+        if removed:
+            array.elements[i - 1] == array.elements[i]
+            array.elements[array.count] = None
+        elif array.elements[i] == element:
+            removed = True
+    if removed:
+        array.count -= 1
+    if not removed:
+        print("specified element does not exist in array")
 
 # Remove the element in a given position and return it
 # Then shift every element after that occurrance to fill the gap
-def array_pop():
-    # Throw an error if array is out of the current count
-    # Your code here
-    pass
+# def array_pop(array, index):
+#     # Throw an error if array is out of the current count
+#     # Your code here
+#     if index >= array.count:
+#         print("error not in range")
+#         return None
+#     return_value = array.elements[index]
+#     for i in range(index + 1, array.count, 1):
+#         array.elements[i - 1] = array.elements[i]
+#     array.elements[array.count] = None
+#     array.count -= 1
+#     return return_value
 
 
 # Utility to print an array
@@ -83,7 +103,7 @@ arr = array(1)
 
 array_insert(arr, "STRING1", 0)
 array_print(arr)
-array_pop(arr, 0)
+#array_pop(arr, 0)
 array_print(arr)
 array_insert(arr, "STRING1", 0)
 array_append(arr, "STRING4")
