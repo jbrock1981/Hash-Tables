@@ -72,18 +72,18 @@ def array_remove(array, element):
 
 # Remove the element in a given position and return it
 # Then shift every element after that occurrance to fill the gap
-# def array_pop(array, index):
-#     # Throw an error if array is out of the current count
-#     # Your code here
-#     if index >= array.count:
-#         print("error not in range")
-#         return None
-#     return_value = array.elements[index]
-#     for i in range(index + 1, array.count, 1):
-#         array.elements[i - 1] = array.elements[i]
-#     array.elements[array.count] = None
-#     array.count -= 1
-#     return return_value
+def array_pop(array, index):
+    if index > array.count:
+        print("element out of range")
+        return None
+    # Throw an error if array is out of the current count
+    return_value = array.elements[index]
+    for i in range(index + 1, array.count):
+        array.elements[i-1] = array.elements[i]
+    # Your code here
+    array.count -=1
+    array.elements[array.count] = None
+    return return_value
 
 
 # Utility to print an array
@@ -103,7 +103,7 @@ arr = array(1)
 
 array_insert(arr, "STRING1", 0)
 array_print(arr)
-#array_pop(arr, 0)
+array_pop(arr, 0)
 array_print(arr)
 array_insert(arr, "STRING1", 0)
 array_append(arr, "STRING4")
